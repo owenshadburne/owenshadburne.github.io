@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <title>MealMatch</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="icon" type="image/x-icon" href="/Images/MealMatch/Logo (Simple).svg">
+    </head>
+
+    <body class="dark-color text-light full-screen food-texture food-texture-dark">
+        <div class="vertical-flex">
+            <!-- Slot -->
+            <div class="slot" id="slot">
+                <!-- Template -->
+                <template id="template">
+                    <!-- Tile -->
+                    <div class="tile prevent-select" id="tile">
+                        <!-- Switch -->
+                        <div class="switch-box rounded" id="switch">
+                            <!-- Photos -->
+                            <div class="primary-color padded rounded photo-box no-margin text-center" id="photos">
+                                <p>There are no photos for this establishment.</p>
+                            </div>
+
+                            <!-- Extra -->
+                            <div class="primary-color padded rounded extra-box no-margin" id="extra">
+                                <div class="pad-bot"><b>Name:</b>
+                                    <span id="name-backup">N/A</span>
+                                </div>
+                                <div class="pad-bot"><b>Rating:</b>
+                                    <span id="rating">N/A</span>
+                                </div>
+                                <div class="pad-bot"><b>Address:</b>
+                                    <a class="text-white" id="address">N/A</a>
+                                </div>
+                                <div class="pad-bot"><b>Website:</b>
+                                    <a class="text-white" id="website">N/A</a>
+                                </div>
+                                <div class="pad-bot"><b>Phone Number:</b>
+                                    <a class="text-white" id="phone">N/A</a>
+                                </div>
+                                <div id="hours"></div>
+                                <div>
+                                    <table class="table table-dark table-borderless no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Response</th>
+                                                <th scope="col">Amount of Votes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-top-border">
+                                            <tr>
+                                                <td scope="row">Like</td>
+                                                <td>
+                                                    <blockquote class="spoiler no-margin" id="yes-votes">
+                                                        0
+                                                    </blockquote>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Dislike</td>
+                                                <td>
+                                                    <blockquote class="spoiler no-margin" id="no-votes">
+                                                        0
+                                                    </blockquote>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Undecided</td>
+                                                <td>
+                                                    <blockquote class="spoiler no-margin" id="undecided-votes">
+                                                        0
+                                                    </blockquote>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">Total</td>
+                                                <td id="total-votes">0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="primary-color padded rounded no-margin info-box" id="info">
+                            <div class="justify-content-between d-flex">
+                                <h1 class="no-margin pad-top ellp" id="name">Name</h1>
+                                <button type="button" class="image-button no-outer">
+                                    <img class="pill-image" src="/Images/MealMatch/Info.svg">
+                                </button>
+                            </div>
+                            <h5 class="no-margin opacity-1 pad-bot ellp" id="category">Category</h5>
+                            <h5 class="no-margin opacity-2 pad-bot ellp">
+                                <span id="price">$$</span>,
+                                <span id="distance">Num Miles Away</span>
+                            </h5>
+                        </div>                  
+                    </div>
+                </template>
+
+                <!-- Decided -->
+                <div class="tile" style="z-index: 0;">
+                    <!-- Switch -->
+                    <div class="switch-box rounded" id="switch">
+                        <!-- Photos -->
+                        <div class="dark-color padded rounded photo-box no-margin primary-color-text" id="decided-box" style="overflow-y: auto !important;">
+                            <div class="text-center visually-hidden" id="failed-text">
+                                Everyone has responded and no matches have been made.
+                                <br/>
+                                Try a different location or different filters.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="dark-color padded rounded no-margin primary-color-text info-box" id="info">
+                        <h1 class="no-margin pad-top ellp">No More Matches.</h1>
+                        <h5 class="no-margin opacity-1 pad-bot ellp">Wait for others...</h5>
+                        <h5 class="no-margin opacity-2 pad-bot ellp">Or create a new match!</h5>
+                    </div>                  
+                </div>
+
+                <!-- Placeholder -->
+                <div class="tile placeholder-tile" id="placeholder">
+                    <!-- Switch -->
+                    <div class="switch-box rounded" id="switch">
+                        <!-- Photos -->
+                        <div class="primary-color padded rounded photo-box no-margin" id="photos" style="overflow-y: hidden !important;">
+                            <div class="placeholder-image rounded bordered">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                            <br/>
+                            <div class="placeholder-image rounded bordered">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                            <br/>
+                            <div class="placeholder-image rounded bordered">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="primary-color padded rounded no-margin info-box" id="info">
+                        <h1 class="no-margin pad-top ellp placeholder-glow" id="name">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-3"></span>
+                        </h1>
+                        <h5 class="no-margin opacity-1 pad-both ellp placeholder-glow" id="category">
+                            <span class="placeholder col-3"></span>
+                            <span class="placeholder col-4"></span>
+                        </h5>
+                        <h5 class="no-margin opacity-2 pad-bot ellp placeholder-glow">
+                            <span class="placeholder col-2"></span>
+                            <span class="placeholder col-4"></span>
+                        </h5>
+                    </div>  
+                </div>
+            </div>
+
+            <!-- Toolbar -->
+            <nav class="navbar toolbar" id="toolbar">
+                <div type="button" class="container-fluid justify-content-evenly">
+                    <button type="button" class="btn image-button rounded-pill choice-btn" id="no">
+                        <img class="toolbar-image" src="/Images/MealMatch/Close_round Outline.svg">
+                    </button>
+                    <a type="button" class="btn image-button rounded-pill choice-btn-alt" href="/Pages/MealMatch/home.html">
+                        <img class="toolbar-image" src="/Images/MealMatch/Home Outline.svg">
+                    </a>
+                    <button type="button" class="btn image-button rounded-pill choice-btn" id="yes">
+                        <img class="toolbar-image" src="/Images/MealMatch/Favorite Outline.svg">
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Decided Modal -->
+        <div class="modal fade" id="decidedModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="decidedModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="decidedModalLabel">Match!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="decided-text">
+                        Body
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light white-border" data-bs-dismiss="modal">Continue Matching</button>
+                        <a class="btn btn-light white-border" href="/Pages/MealMatch/home.html">Return Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+        <link rel="stylesheet" href="/Packages/Bootstrap/css/bootstrap.min.css">
+        <script src="/Packages/Bootstrap/js/bootstrap.min.js"></script>
+        
+        <link href="/Include/MealMatch/mealmatch.css" rel="stylesheet">
+        <script type="module" src="/Include/MealMatch/Page Scripts/texture-offset.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-initialize.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-login.js"></script>
+        <script type="module" src="/Include/MealMatch/Page Scripts/match.js"></script>
+    </body>
+</html>

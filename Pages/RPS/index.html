@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+    <head>
+        <title>RPS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="/Images/Logo/Backed.svg">
+    </head>
+    <body class="bg-dark text-light">
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-outline-light" id="Rock">
+                Rock
+            </button>
+            <button class="btn btn-outline-light" id="Paper">
+                Paper
+            </button>
+            <button class="btn btn-outline-light" id="Scissors">
+                Scissors
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <canvas id="canvas">
+
+            </canvas>
+        </div>
+
+        <br/>
+        <div class="d-flex justify-content-evenly">
+            <div class="text-center">
+                <h1>You Played:</h1>
+                <p id="playerDisplay">...</p>
+            </div>
+            <div class="text-center">
+                <h1>Opponent Played:</h1>
+                <p id="aiDisplay">...</p>
+            </div>
+        </div>
+        
+
+        <br/>
+        <div class="text-center">
+            <h1>Score:</h1>
+            <p id="scoreDisplay">0</p>
+        </div>
+
+        <link rel="stylesheet" href="/Packages/Bootstrap/css/bootstrap.min.css">
+        <script src="/Packages/Bootstrap/js/bootstrap.min.js"></script>
+
+        <link href="/Include/RPS/rps.css" rel="stylesheet">
+        <script type="module" src="/Include/RPS/rps.js"></script>
+    </body>
+</html>

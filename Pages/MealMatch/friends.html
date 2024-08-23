@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <title>MealMatch</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="icon" type="image/x-icon" href="/Images/MealMatch/Logo (Simple).svg">
+    </head>
+
+    <body class="dark-color text-light food-texture-dark parallax-bg">
+        <!-- Toolbar -->
+        <nav class="navbar top-div fixed-bottom top-border food-texture" id="toolbar">
+            <div class="container-fluid justify-content-evenly">
+                <a type="button" class="btn image-button" href="/Pages/MealMatch/home.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Home.svg">
+                </a>
+                <a type="button" class="btn image-button" href="/Pages/MealMatch/new-match.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Add_square.svg">
+                </a>
+                <a type="button" class="btn image-button disabled no-border" href="/Pages/MealMatch/friends.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Friends.svg">
+                </a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <div class="top-div sticky-top bottom-border food-texture">
+            <br/>
+            <h1 class="display-1 pad-bot-rem no-margin">Friends</h1>
+        </div>
+
+        <br/> <!-- Friend Code -->
+        <div>
+            <div class="primary-color rounded padded" id="friend-code-container">
+                <div class="justify-content-between d-flex">
+                    <p class="l-font">Friend Code</p>
+                    <button type="button" class="image-button" id="copy">
+                        <img class="clipboard-image" src="/Images/MealMatch/Copy_alt.svg">
+                    </button>
+                </div>
+                <p id="friendcode" style="word-break: break-all"></p>
+            </div>
+            <br/>
+        </div>
+
+        <!-- Send Friend Request -->
+        <div> 
+            <div class="primary-color rounded padded">
+                <div class="justify-content-between" style="display:flex">
+                    <p class="l-font">Send Request</p>
+                </div>
+                <div class="input-group mb-3" data-bs-theme="dark">
+                    <div class="form-floating">
+                        <input type="text" class="form-control colored-input" id="friend-request-input" placeholder="Code">
+                        <label for="friend-request-input">Friend Code</label>
+                    </div>
+                    <button class="btn btn-outline-light" type="button" id="send-request">Send</button>
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <!-- Friend Requests -->
+        <div class="accordion">
+            <div class="accordion-item" id="request-div">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#request-collapse" aria-expanded="true" aria-controls="request-collapse">
+                    <p class="l-font">Requests 
+                        <span id="request-amount">(0)</span>
+                    </p>
+                </button>
+              </h2>
+              <div id="request-collapse" class="accordion-collapse collapse show" data-bs-parent="#request-div">
+                <div class="accordion-body" id="request-dropdown">
+                    <div id="request-break" class="visually-hidden"><br/></div>
+                    <p class="padded-2 text-center rounded no-border m-font-special" id="request-disclaimer">You have no requests.</p>
+                    <template id="request-template">
+                        <div id="request-wrapper">
+                            <div class="primary-color rounded padded-2 d-flex justify-content-between no-overflow">
+                                <p class="m-font no-overflow-text" id="display-name">DisplayName</p>
+                                <div class="justify-content-evenly no-overflow-boxes">
+                                    <button class="btn btn-outline-light even-button-padding" id="decline">
+                                        <img src="/Images/MealMatch/Close_round.svg">
+                                    </button>
+                                    <button class="btn btn-outline-light even-button-padding" id="accept">
+                                        <img src="/Images/MealMatch/Done_round.svg">
+                                    </button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </template>
+                </div>
+              </div>
+            </div>
+        </div>
+        <br/>
+
+        <!-- Friends -->
+        <div class="accordion">
+            <div class="accordion-item" id="friend-div">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#friend-collapse" aria-expanded="true" aria-controls="friend-collapse">
+                    <p class="l-font">Friends 
+                        <span id="friend-amount">(0)</span>
+                    </p>
+                </button>
+              </h2>
+              <div id="friend-collapse" class="accordion-collapse collapse show" data-bs-parent="#friend-div">
+                <div class="accordion-body" id="friend-dropdown">
+                    <div id="friend-break" class="visually-hidden"><br/></div>
+                    <p class="padded-2 text-center rounded no-border m-font-special" id="friend-disclaimer">You have no friends.</p>
+                    <template id="friend-template">
+                        <div id="friend-wrapper">
+                            <div class="primary-color rounded padded-2 d-flex justify-content-between no-overflow">
+                                <p class="m-font no-overflow-text" id="display-name">DisplayName</p>
+                                <div>
+                                    <button class="btn btn-outline-light even-button-padding" id="remove">
+                                        <img src="/Images/MealMatch/Close_round.svg">
+                                    </button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </template>
+                </div>
+              </div>
+            </div>
+        </div>
+        <br/>
+
+        <!-- Toast -->
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div class="toast align-items-center" data-bs-theme="dark" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast">
+                <div class="d-flex">
+                    <div class="toast-body" id="toast-text">
+                        Copied to Clipboard!
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        
+
+        <link rel="stylesheet" href="/Packages/Bootstrap/css/bootstrap.min.css">
+        <script src="/Packages/Bootstrap/js/bootstrap.min.js"></script>
+        
+        <link href="/Include/MealMatch/mealmatch.css" rel="stylesheet">
+        <script type="module" src="/Include/MealMatch/Page Scripts/texture-offset.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-initialize.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-login.js"></script>
+        <script type="module" src="/Include/MealMatch/Page Scripts/friends.js"></script>
+    </body>
+</html>

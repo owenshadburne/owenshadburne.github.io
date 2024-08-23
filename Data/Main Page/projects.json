@@ -1,0 +1,120 @@
+{
+	"Meal Match": {
+		"date": "2/2024",
+		"language": "JavaScript",
+		"technologies": [
+			"GitHub Pages",
+			"Firebase",
+			"Google Maps API",
+			"Bootstrap"
+		],
+		"links": {
+			"Try it Out": "https://cubetures.github.io/Pages/MealMatch/home.html",
+			"GitHub": "https://github.com/CubeTures/CubeTures.github.io"
+		},
+		"about": "A Tinder-like web app utilizing Firebase Authentication, Firebase Database, and 3 Google Maps APIs providing real-time connections with peers to find a restaurant in the area.",
+		"images": [
+			"/Images/Main Page/Projects/Meal Match.png"
+		],
+		"color": "#FF7192"
+	},
+	"Search Engine": {
+		"date": "2/2023",
+		"language": "JavaScript",
+		"technologies": [
+			"Node.js",
+			"Express.js",
+			"Jest",
+			"Bootstrap"
+		],
+		"links": {
+			"GitHub": "https://github.com/owenshadburne/Search-Engine"
+		},
+		"about": "A web crawler and search engine running off of a client-side Express API for scoring and displaying results from a local database given a query.",
+		"images": [
+			"/Images/Main Page/Projects/Search Engine.png"
+		],
+		"color": "#AEAEAE"
+	},
+	"SQL Importer": {
+		"date": "10/2022",
+		"language": "Python",
+		"technologies": [
+			"Python",
+			"SQLite"
+		],
+		"links": {
+			"GitHub": "https://github.com/owenshadburne/SQL-Importer"
+		},
+		"about": "A lightweight Python program for converting any json, csv, or xml file into an SQLite database.",
+		"images": [
+			"/Images/Main Page/Projects/SQL Importer.png"
+		],
+		"color": "#a182ff"
+	},
+	"BrainAnd": {
+		"date": "7/2022",
+		"language": "C#",
+		"technologies": [
+			"Unity",
+			"Git"
+		],
+		"links": {
+			"Try it Out": "https://cubetures.itch.io/brainand",
+			"GitHub": "https://github.com/owenshadburne/BrainAnd"
+		},
+		"about": "A unique esoteric programming language for an intense puzzle game built with Unity.",
+		"images": [
+			"/Images/Main Page/Projects/BrainAnd.png"
+		],
+		"color": "#f8fab6"
+	},
+	"Settlers of Catan": {
+		"date": "5/2022",
+		"language": "Java",
+		"technologies": [
+			"Java Swing",
+			"Git"
+		],
+		"links": {
+			"GitHub": "https://github.com/owenshadburne/Settlers-of-Catan"
+		},
+		"about": "A faithful reaction of the popular board game Settlers of Catan using Java Swing.",
+		"images": [
+			"/Images/Main Page/Projects/Settlers of Catan.png"
+		],
+		"color": "#f2ab6d"
+	},
+	"Core Control": {
+		"date": "12/2021",
+		"language": "C#",
+		"technologies": [
+			"Unity",
+			"Git"
+		],
+		"links": {
+			"Try it Out": "https://bobgames1215.itch.io/core-control"
+		},
+		"about": "An arcade-style 2D game with Unity for the Zeno Game Jam, placing 2nd among 78 submissions.",
+		"images": [
+			"/Images/Main Page/Projects/Core Control.png"
+		],
+		"color": "#5dfbfa"
+	},
+	"Bloxorz": {
+		"date": "11/2021",
+		"language": "Python",
+		"technologies": [
+			"Pygame",
+			"PyInstaller"
+		],
+		"links": {
+			"GitHub": "https://github.com/owenshadburne/Bloxorz"
+		},
+		"about": "A reimagining of the flash game Bloxorz in 2D utilizing Pygame. Distributed to 90 students through PyInstaller, earning recognition as the top project among the advanced groups.",
+		"images": [
+			"/Images/Main Page/Projects/Bloxorz.png"
+		],
+		"color": "#f06a5d"
+	}
+}

@@ -1,0 +1,22 @@
+Version 1.1
+- REMOVE DUPLICATE RESTAURANTS
+- CHANGE "NO MORE MATCHES" MESSAGE (try searching again with a different location or filters?)
+- Tell if the store youre looking at is open at the moment
+- Suppress notifications of match until re-enter
+- Change icons to bootstrap
+- Add outlines to the toolbar icons
+- Toolbar at top of matching screen
+    - See places you liked
+    - See places that you matched with
+
+Version 1.2
+- Change api to tripadvisor
+    - Pros:
+        - Free with Links to Site
+    - Cons: 
+        - Only 10 Places
+        - Only 3 Images
+    - Workaround:
+        - Make both apis usable
+        - Only allow google api to be used by whitelisted users
+            - Add button to allow users to request to be whitelisted

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MealMatch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="/Images/MealMatch/Logo (Simple).svg">
+     </head>
+
+    <body class="dark-color text-light food-texture-dark parallax-bg">
+        <!-- Toolbar -->
+        <nav class="navbar top-div fixed-bottom top-border food-texture" id="toolbar">
+            <div class="container-fluid justify-content-evenly">
+                <a type="button" class="btn image-button" href="/Pages/MealMatch/home.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Home.svg">
+                </a>
+                <a type="button" class="btn image-button disabled no-border" href="/Pages/MealMatch/new-match.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Add_square.svg">
+                </a>
+                <a type="button" class="btn image-button" href="/Pages/MealMatch/friends.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Friends.svg">
+                </a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <div class="top-div sticky-top bottom-border food-texture">
+            <br>
+            <h1 class="display-1 pad-bot-rem no-margin">New Match</h1>
+        </div>
+
+        <br/> <!-- Location -->
+        <div>
+            <div class="primary-color rounded padded">
+                <div class="justify-content-between d-flex">
+                    <p class="l-font">Location</p>
+                    <div class="d-flex">
+                        <button type="button" class="image-button" id="current-location">
+                            <img class="pill-image" src="/Images/MealMatch/Pin_alt.svg">
+                        </button>
+                        <button type="button" class="image-button" id="location-info" data-bs-toggle="modal" data-bs-target="#locationModal">
+                            <img class="pill-image" src="/Images/MealMatch/Info.svg">
+                        </button>
+                    </div>
+                </div>
+                <div class="vertical-input-group">
+                    <div class="input-group mb-3" data-bs-theme="dark">
+                        <div class="form-floating">
+                            <input type="text" class="form-control colored-input" id="address-input" placeholder="">
+                            <label for="address-input">Street Address</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" data-bs-theme="dark">
+                        <div class="form-floating">
+                            <input type="text" class="form-control colored-input" id="city-input" placeholder="">
+                            <label for="city-input">City</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" data-bs-theme="dark">
+                        <div class="form-floating">
+                            <select class="form-select colored-input" id="state-input">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                              </select>
+                              <label for="state-input">State</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control colored-input" id="zip-input" placeholder="">
+                            <label for="zip-input">Zip</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <input type="hidden" id="address-hidden">
+                    <input type="hidden" id="city-hidden">
+                    <input type="hidden" id="state-hidden">
+                    <input type="hidden" id="zip-hidden">
+                    <input type="hidden" id="latlng-input">
+                </div>
+
+                <!-- Spinner -->
+                <div class="visually-hidden" id="location-spinner" style="margin-bottom: .5rem;">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <!-- People -->
+        <div>
+            <div class="primary-color rounded padded padded-bottom" id="people">
+                <div class="d-flex justify-content-between">
+                    <p class="l-font">People</p>
+                    <button type="button" class="image-button" id="people-info" data-bs-toggle="modal" data-bs-target="#peopleModal">
+                        <img class="pill-image" src="/Images/MealMatch/Info.svg">
+                    </button>
+                </div>
+                <!-- Flexbox -->
+                <div class="d-flex flex-wrap" id="people-container">
+                    <template id="people-template">
+                        <input type="checkbox" class="btn-check" id="input">
+                        <label class="btn btn-outline-light flex-wrap-checkbox" for="checkbox" id="label"> 
+                            Person 1
+                        </label>
+                    </template>
+
+                    <!-- Disclaimer -->
+                    <p class="s-font" id="people-disclaimer">You have no friends.</p>
+                </div>
+
+                <!-- Spinner -->
+                <div class="visually-hidden" id="people-spinner" style="margin-top: -2rem;">
+                    <br/>
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <!-- Filters --> 
+        <div>
+            <div id="filters">
+
+            </div>
+            <br/>
+        </div>
+
+        <!-- Advanced -->
+        <div>
+            <div class="primary-color rounded padded padded-bottom" id="people">
+                <div class="d-flex justify-content-between">
+                    <p class="l-font">Advanced</p>
+                    <button type="button" class="image-button" data-bs-toggle="modal" data-bs-target="#advancedModal">
+                        <img class="pill-image" src="/Images/MealMatch/Info.svg">
+                    </button>
+                </div>
+
+                <div>
+                    <p class="no-margin" style="margin-top: .5rem !important;">
+                        Search Radius: <output id="radius-value">5</output> Mile(s)
+                    </p>
+                    <div class="form-group padded-extension">
+                        <input type="range" class="form-range" min="1" max="15" step="0.5" value="5" id="radius-range">
+                        
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <!-- Match Button -->
+        <div class="text-center">
+            <button class="btn btn-outline-light white-border" id="match">Match</button>
+        </div>
+        <br>
+
+        <!-- #region Modals -->
+        
+        <!-- Location Modal -->
+        <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="locaitonModalLabel">About Location</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>Input the address of the center of the area you would like to search.</li>
+                            <li>Click the <img src="/Images/MealMatch/Pin_alt.svg"> icon to use your current location.</li>
+                            <li>Your current location may be read innacurately depending on your device.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Error Modal -->
+        <div class="modal fade" id="locationErrorModal" tabindex="-1" aria-labelledby="locationErrorModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="locaitonErrorModalLabel">Location Error</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="location-error-text">
+                        There was an error in getting your location. Please type the address manually.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Validation Modal -->
+        <div class="modal fade" id="locationValidationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="locationValidationModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="locaitonValidationModalLabel">Validate Location</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="location-error-text">
+                        The address you provided could not be found. Is this the correct address?
+                        <br/>
+                        <b id="formatted-address"></b>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light white-border" data-bs-dismiss="modal">No, Cancel Match</button>
+                        <button type="button" class="btn btn-light white-border" data-bs-dismiss="modal" id="location-validation-button">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- People Modal -->
+        <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="peopleModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="peopleModalLabel">About People</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>Click the people who you wish to be included in your match.</li>
+                            <li>You must include at least one person to create a match.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- People Error Modal -->
+        <div class="modal fade" id="peopleErrorModal" tabindex="-1" aria-labelledby="peopleErrorModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="peopleErrorModalLabel">Error with Selected People</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>Please select at least one person to create a match.</li>
+                            <li>If no people are showing up, you need to register a friend. 
+                                To do so, follow these steps:
+                                <ol>
+                                    <li>Go to the friend tab.</li>
+                                    <li>Copy your friend code and send it to someone.</li>
+                                    <li>Have them send you a friend request.</li>
+                                    <li>Accept their friend request under the "requests" tab.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Modal -->
+        <div class="modal fade" id="advancedModal" tabindex="-1" aria-labelledby="advancedModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="advancedModalLabel">About Advanced Options</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Search Radius
+                        <ul>
+                            <li>The radius from the location of your search you wish to recieve results from.</li>
+                            <li>The default value is 5 Miles.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters Modal -->
+        <div class="modal fade" id="filtersModal" tabindex="-1" aria-labelledby="filtersModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="filtersModalLabel">About Filters</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <b>Restaurant Types</b><br/>
+                        <ul>
+                            <li>
+                                <b>Primary Type</b>:
+                                The main type of the restaurant.
+                                McDonald's Primary Type is Fast Food.
+                            </li>
+                            <li>
+                                <b>Regular Types</b>:
+                                The different categories a restuarant may fall under.
+                                McDonald's' types include Fast Food and Hamburger.
+                            </li>
+                        </ul>
+
+                        <b>Filter States</b><br/>
+                        <ul style="list-style-type: none; padding-left: 1rem;">
+                            <li>
+                                <label style="margin-left: 18px;">
+                                    <input type="checkbox" class="form-check-input checkbox-example" checked disabled id="disabled-checked">
+                                    Will create a search including restaurants that have this <b>Primary Type</b>.
+                                    (Filters are combined with OR: American OR Fast Food.)
+                                </label>
+                            </li>
+                            <li>
+                                <label style="margin-left: 18px;">
+                                    <input type="checkbox" class="form-check-input checkbox-example indeterminate" checked disabled id="disabled-indeterminate">
+                                    Will create a search where restaurants with this <b>Regular Type</b> will not show up in results.
+                                    (Filters are combined with AND: Not American AND Not Fast Food.)
+                                </label>
+                            </li>
+                            <li>
+                                <label style="margin-left: 18px;">
+                                    <input type="checkbox" class="form-check-input checkbox-example" disabled id="disabled-unchecked">
+                                    Will create a search where restaurants with this
+                                    <b>Primary Type</b> will not show up.
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Match Load Modal -->
+        <div class="modal fade" id="matchLoadModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="matchLoadModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="matchLoadModalLabel">Creating Match</h1>
+                    </div>
+                    <div class="modal-body">
+                        Please wait while we create your match. 
+                        This may take longer if you have bad internet connection.
+                        <br/>
+                        <div class="padded no-border">
+                            <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated primary-color" style="width: 0%" id="load-bar"></div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-light white-border" data-bs-dismiss="modal" id="cancel-match">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Match Cancel Modal -->
+        <div class="modal fade" id="matchCancelModal" tabindex="-1" aria-labelledby="matchCancelModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="matchCancelModalLabel">Match Cancelled</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        You cancelled the match.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Match Error Modal -->
+        <div class="modal fade" id="matchErrorModal" tabindex="-1" aria-labelledby="matchErrorModalLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="matchErrorModalLabel">Error with Match</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        There was an error with creating the match.
+                        Please try again with a different location, radius, or filters or try again later.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+
+        <link rel="stylesheet" href="/Packages/Bootstrap/css/bootstrap.min.css">
+        <script src="/Packages/Bootstrap/js/bootstrap.min.js"></script>
+
+        <link href="/Include/MealMatch/mealmatch.css" rel="stylesheet">
+        <script type="module" src="/Include/MealMatch/Page Scripts/texture-offset.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-initialize.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-login.js"></script>
+        <script type="module" src="/Include/MealMatch/Page Scripts/new-match.js"></script>
+    </body>
+</html>

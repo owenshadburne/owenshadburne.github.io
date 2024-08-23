@@ -1,0 +1,18 @@
+Order by date created
+
+Descriptions:
+One-Liner (describe the main point of the application in one sentence)
+Major Technologies (what important things were used in this project that I haven't used before?)
+Background Context (what is the surrounding context for the creation of the application? If it is not already obvious from the tags)
+
+
+Possible Fix:
+
+.project-card
+    &.flipped
+        .project-card-front
+            visibility: hidden !important
+
+    &:not(.flipped)
+        .project-card-back
+        visibility: hidden !important

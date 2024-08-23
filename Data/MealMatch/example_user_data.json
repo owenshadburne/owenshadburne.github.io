@@ -1,0 +1,51 @@
+{
+    "users": {
+        "userID1": {
+            "writeonly": {
+                "friend_requests": {
+                    "userID3": "not_cube",
+                    "userID4": "not_lowa"
+                },
+                "friends": {
+                    "userID2": "cube",
+                    "userID5": "lowa"
+                },
+                "match_requests": {
+                    "userID2": true
+                }
+            },
+            "readonly": {
+                "displayName": "test_user_1"
+            },
+            "public": {
+                "match": {
+                    "address": "physical_address",
+                    "date": "1/6/2024",
+                    "time": "6:33:33 PM",
+                    "people": {"userID1": "cube", "userID2": "lowa"},
+                    "locations": {
+                        "id": {
+                            "name": "displayName",
+                            "category": "primaryTypeDisplayName/text",
+                            "distance": "location/latitude",
+                            "price": "priceLevel",
+                            "photos": {"https://places.googleapis.com/v1/NAME/media?key=API_KEY&maxHeightPx=NUM&maxWidthPx=NUM": true},
+
+                            "rating": "rating",
+                            "website": "websiteUri",
+                            "phoneNumber": "nationalPhoneNumber",
+                            "address": "formattedAddress",
+                            "maps": "googleMapsUri",
+                            "status": "businessStatus",
+                            "hours": "currentOpeningHours/weekdayDescriptions/array",
+
+                            "responses" : { "userID1": "Y", "userID2": "N" }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+  
+  

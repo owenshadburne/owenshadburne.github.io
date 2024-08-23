@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <title>MealMatch</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="icon" type="image/x-icon" href="/Images/MealMatch/Logo (Simple).svg">
+    </head>
+
+    <body class="dark-color text-light food-texture-dark parallax-bg">
+        <!-- Toolbar -->
+        <nav class="navbar top-div fixed-bottom top-border visually-hidden food-texture" id="toolbar">
+            <div type="button" class="container-fluid justify-content-evenly">
+                <a type="button" class="btn image-button disabled no-border" href="/Pages/MealMatch/home.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Home.svg">
+                </a>
+                <a type="button" class="btn image-button" href="/Pages/MealMatch/new-match.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Add_square.svg">
+                </a>
+                <a type="button" class="btn image-button" href="/Pages/MealMatch/friends.html">
+                    <img class="toolbar-image" src="/Images/MealMatch/Friends.svg">
+                </a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <div class="top-div sticky-top bottom-border food-texture">
+            <br/>
+            <h1 class="display-1 pad-bot-rem no-margin">MealMatch</h1>
+        </div>
+
+            
+        <!-- Spinner -->
+        <div class="visually-hidden" id="spinner">
+            <br/>
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matches -->
+        <div class="match-container" id="match-container">
+            <template id="match-template">
+                <div id="match-element">
+                    <div class="primary-color rounded padded padded-top">
+                        <div class="d-flex justify-content-between negative-margin-top">
+                            <h1 class="no-margin margin-top" id="creator">Creator</h1>
+                            <button type="button" class="image-button" id="people-info" data-bs-toggle="modal" data-bs-target="#peopleModal">
+                                <img class="pill-image" src="/Images/MealMatch/External.svg" id="match-image">
+                            </button>
+                        </div>
+                        <h5 class="opacity-1 no-margin" id="date">Date</h5>
+                        <p class="opacity-2 no-margin" id="address">Address</p>
+                        <p class="opacity-2" id="people">People</p>
+                    </div>
+                </div>
+            </template>
+        </div>
+        
+        <!-- Disclaimers -->
+        <div class="text-center no-margin padded no-border">
+            <p class="disclaimer-text visually-hidden" id="no-matches-disclaimer">You currently have no active matches.</p>
+            <p class="disclaimer-text" id="login_disclaimer">
+                This was designed for mobile devices and may not look as intented on horizontal aspect ratios.<br/><br/>
+                Logging in will allow others to see your google account username.                
+            </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-center justify-content-evenly">
+            <button type="button" class="btn btn-outline-light white-border visually-hidden" id="logout">Log Out</button>
+            <button type="button" class="btn btn-outline-light white-border" id="login">Login</button>
+        </div>
+        <br/>
+        
+
+        <link rel="stylesheet" href="/Packages/Bootstrap/css/bootstrap.min.css">
+        <script src="/Packages/Bootstrap/js/bootstrap.min.js"></script>
+
+        <link href="/Include/MealMatch/mealmatch.css" rel="stylesheet">
+        <script type="module" src="/Include/MealMatch/Page Scripts/texture-offset.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-initialize.js"></script>
+        <script type="module" src="/Include/MealMatch/Firebase/firebase-login.js"></script>
+        <script type="module" src="/Include/MealMatch/Page Scripts/homepage.js"></script>
+    </body>
+</html>
