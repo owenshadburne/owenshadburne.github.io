@@ -9,7 +9,7 @@
 			"Bootstrap"
 		],
 		"links": {
-			"Try it Out": "https://cubetures.github.io/Pages/MealMatch/home.html",
+			"Try it Out": "https://owenshadburne.github.io/Pages/MealMatch/home.html",
 			"GitHub": "https://github.com/CubeTures/CubeTures.github.io"
 		},
 		"about": "A Tinder-like web app utilizing Firebase Authentication, Firebase Database, and 3 Google Maps APIs providing real-time connections with peers to find a restaurant in the area.",
